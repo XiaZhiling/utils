@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bookstore>
+	<book id="1">
+		<name>Java</name>
+		<author>未知</author>
+		<year>2015</year>
+		<price>89</price>
+	</book>
+	<book id="1" class="ss">
+		<name>Hibernate</name>
+		<author>未知</author>
+		<price>100</price>
+		<language>English</language>
+	</book>
+</bookstore>
