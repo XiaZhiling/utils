@@ -12,11 +12,9 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class DomParse {
+public class DomXml {
 	
-	
-
-	public static void main(String[] args) {
+	public void parseXml() {
 		//1.创建一个DocumentBuilderFactory的对象
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		try {
@@ -62,6 +60,16 @@ public class DomParse {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void createXml() {
+		
+	}
+
+	public static void main(String[] args) {
+		DomXml domXml = new DomXml();
+//		domXml.parseXml();
+		domXml.createXml();
 	}
 
 }
