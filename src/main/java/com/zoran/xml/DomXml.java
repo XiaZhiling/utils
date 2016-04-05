@@ -1,12 +1,21 @@
 package com.zoran.xml;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -63,7 +72,42 @@ public class DomXml {
 	}
 	
 	public void createXml() {
+		//1.创建一个DocumentBuilderFactory的对象
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		try {
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			Document document = db.newDocument();
+			document.setXmlStandalone(true);
+			
+			Element bookStore = document.createElement("bookstore");
+			Element book = document.createElement("book");
+			Element name = document.createElement("name");
+			name.setTextContent("大侠饶命");
+			book.appendChild(name);
+			//向节点中添加属性节点
+			book.setAttribute("id", "1");
+			//向根节点添加子节点
+			bookStore.appendChild(book);
+			//向document添加根节点
+			document.appendChild(bookStore);
+			
+			//将document对象输出为xml文件
+			TransformerFactory tff = TransformerFactory.newInstance();
+			Transformer tf = tff.newTransformer();
+			//设置换行
+			tf.setOutputProperty(OutputKeys.INDENT, "yes");
+			tf.transform(new DOMSource(document), new StreamResult(new File("D:/boosk.xml")));
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		}catch (TransformerConfigurationException e) {
+			e.printStackTrace();
+		}catch (TransformerException e) {
+			e.printStackTrace();
+		}
 		
+		
+		
+	
 	}
 
 	public static void main(String[] args) {
