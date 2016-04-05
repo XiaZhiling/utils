@@ -6,7 +6,7 @@
 		<year>2015</year>
 		<price>89</price>
 	</book>
-	<book id="1" class="ss">
+	<book id="2" class="ss">
 		<name>Hibernate</name>
 		<author>未知</author>
 		<price>100</price>
