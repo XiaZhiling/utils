@@ -1,7 +1,7 @@
 package com.zoran.xml;
 
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -11,12 +11,12 @@ import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Result;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.sax.SAXTransformerFactory;
 import javax.xml.transform.sax.TransformerHandler;
 import javax.xml.transform.stream.StreamResult;
 
 import org.xml.sax.SAXException;
+import org.xml.sax.helpers.AttributesImpl;
 
 import com.zoran.handles.SAXParserHandler;
 
@@ -49,12 +49,25 @@ public class SaxXml {
 			if(file.exists()){
 				file.createNewFile();
 			}
-//			Result result = new StreamResult(new FileInputStream(file));
+			Result result = new StreamResult(new FileOutputStream(file));
+			hander.setResult(result);
+			
+			hander.startDocument();
+			AttributesImpl atts =new AttributesImpl();
+			hander.startElement("", "", "bookStore", atts);
+			atts.clear();
+			atts.addAttribute("", "", "id", "", "1");
+			hander.startElement("", "", "book", atts);
+			hander.endElement("", "", "book");
+			hander.endElement("", "", "bookStore");
+			hander.endDocument();
 			
 			
 		} catch (TransformerConfigurationException e) {
 			e.printStackTrace();
 		}catch (IOException e) {
+			e.printStackTrace();
+		}catch (SAXException e) {
 			e.printStackTrace();
 		}
 		
@@ -63,6 +76,6 @@ public class SaxXml {
 	
 	public static void main(String[] args) {
 		SaxXml saxXml = new SaxXml();
-		saxXml.parseXml();
+		saxXml.createXml();
 	}
 }
