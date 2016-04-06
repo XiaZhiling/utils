@@ -58,6 +58,10 @@ public class SaxXml {
 			atts.clear();
 			atts.addAttribute("", "", "id", "", "1");
 			hander.startElement("", "", "book", atts);
+			atts.clear();
+			hander.startElement("", "", "name", atts);
+			hander.characters("罗密欧".toCharArray(), 0, "罗密欧".length());
+			hander.endElement("", "", "name");
 			hander.endElement("", "", "book");
 			hander.endElement("", "", "bookStore");
 			hander.endDocument();

@@ -16,10 +16,26 @@
 
   <dependencies>
   	<!-- 利用XStream在Java对象和XML之间相互转换 -->
+	<!-- 
 	<dependency>
 		<groupId>com.thoughtworks.xstream</groupId>
 		<artifactId>xstream</artifactId>
 		<version>1.4.8</version>
+	</dependency>
+	 -->
+	
+	<!-- jdom xml解析 -->
+	<dependency>
+		<groupId>org.jdom</groupId>
+		<artifactId>jdom2</artifactId>
+		<version>2.0.6</version>
+	</dependency>
+	
+	<!-- dom4j xml解析 -->
+	<dependency>
+		<groupId>dom4j</groupId>
+		<artifactId>dom4j</artifactId>
+		<version>1.6.1</version>
 	</dependency>
   
   
