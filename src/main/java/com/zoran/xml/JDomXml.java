@@ -55,11 +55,14 @@ public class JDomXml {
 		}
 	}
 	
-	
+	public void createXml() {
+		
+	}
 
 	public static void main(String[] args) {
 		JDomXml jDomXml = new JDomXml();
-		jDomXml.parseXml();
+//		jDomXml.parseXml();
+		jDomXml.createXml();
 	}
 
 }
