@@ -6,8 +6,8 @@ public class SingletonTest {
 
 	@Test
 	public void test() {
-		Singleton singleton1 = Singleton.getSingleton();
-		Singleton singleton2 = Singleton.getSingleton();
+		Singleton singleton1 = Singleton.getInstance();
+		Singleton singleton2 = Singleton.getInstance();
 		System.out.println(":" +(singleton1==singleton2));
 		
 	}
